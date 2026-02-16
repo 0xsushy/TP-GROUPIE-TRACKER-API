@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Recherche de cartes</h1>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/cards">Cartes</a>
+        <a href="/favorites">Favoris</a>
+        <a href="/search">Recherche</a>
+    </nav>
+</header>
+
+<main>
+
+    <form action="/search" method="GET" class="search-bar">
+        <input type="text" name="q" placeholder="Nom de la carte..." value="{{.Query}}">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <div class="cards-container">
+        {{range .Cards}}
+        <div class="card">
+            <a href="/card?id={{.ID}}">
+                <img src="{{.Images.Small}}" alt="{{.Name}}">
+                <h3>{{.Name}}</h3>
+            </a>
+        </div>
+        {{end}}
+    </div>
+
+</main>
+
+</body>
+</html>

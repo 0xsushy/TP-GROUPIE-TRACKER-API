@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Name}} - Détails</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Détails de la carte</h1>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/cards">Cartes</a>
+        <a href="/favorites">Favoris</a>
+        <a href="/search">Recherche</a>
+        <a href="/about">À propos</a>
+    </nav>
+</header>
+
+<main class="details">
+
+    <div class="card-details">
+        <div class="image-block">
+            <img src="{{.Images.Large}}" alt="{{.Name}}" class="card-image">
+        </div>
+
+        <div class="info">
+            <h2>{{.Name}}</h2>
+            <p><strong>Supertype :</strong> {{.Supertype}}</p>
+            <p><strong>Subtypes :</strong> {{range .Subtypes}}{{.}} {{end}}</p>
+            <p><strong>HP :</strong> {{.HP}}</p>
+            <p><strong>Types :</strong> {{range .Types}}{{.}} {{end}}</p>
+            <p><strong>Rareté :</strong> {{.Rarity}}</p>
+
+            <h3>Set</h3>
+            <p>{{.Set.Name}} ({{.Set.Series}})</p>
+            <img src="{{.Set.Images.Symbol}}" alt="Set symbol" style="width:50px">
+
+            <h3>Attaques</h3>
+            {{range .Attacks}}
+                <p><strong>{{.Name}}</strong> — {{.Damage}}</p>
+                <p>{{.Text}}</p>
+            {{end}}
+
+            <h3>Faiblesses</h3>
+            {{range .Weaknesses}}
+                <p>{{.Type}} : {{.Value}}</p>
+            {{end}}
+
+            <h3>Résistances</h3>
+            {{range .Resistances}}
+                <p>{{.Type}} : {{.Value}}</p>
+            {{end}}
+
+            <form action="/add-favorite" method="POST">
+                <input type="hidden" name="id" value="{{.ID}}">
+                <button type="submit">Ajouter aux favoris</button>
+            </form>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

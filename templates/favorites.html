@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Favoris</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Vos cartes favorites</h1>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/cards">Cartes</a>
+        <a href="/favorites">Favoris</a>
+    </nav>
+</header>
+
+<main>
+    <div class="cards-container">
+        {{range .}}
+        <div class="card">
+            <a href="/card?id={{.ID}}">
+                <img src="{{.Images.Small}}" alt="{{.Name}}">
+                <h3>{{.Name}}</h3>
+            </a>
+
+            <a href="/remove-favorite?id={{.ID}}" class="remove-btn">Supprimer</a>
+        </div>
+        {{end}}
+    </div>
+</main>
+
+</body>
+</html>

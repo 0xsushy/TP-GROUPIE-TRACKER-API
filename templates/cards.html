@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartes Pokémon</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Liste des cartes Pokémon</h1>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/cards">Cartes</a>
+        <a href="/favorites">Favoris</a>
+        <a href="/search">Recherche</a>
+        <a href="/about">À propos</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Cartes disponibles</h2>
+
+    <div class="cards-container">
+        {{range .Cards}}
+        <div class="card">
+            <a href="/card?id={{.ID}}">
+                <img src="{{.Images.Small}}" alt="{{.Name}}">
+                <h3>{{.Name}}</h3>
+            </a>
+            <p>Type : {{index .Types 0}}</p>
+            <p>HP : {{.HP}}</p>
+        </div>
+        {{end}}
+    </div>
+
+    <div class="pagination">
+        <a href="/cards?page={{sub .Page 1}}&size={{.Size}}">Précédent</a>
+        <span>Page {{.Page}}</span>
+        <a href="/cards?page={{add .Page 1}}&size={{.Size}}">Suivant</a>
+    </div>
+
+    <div class="page-size">
+        <a href="/cards?page=1&size=10">10 par page</a>
+        <a href="/cards?page=1&size=20">20 par page</a>
+        <a href="/cards?page=1&size=30">30 par page</a>
+    </div>
+
+    <form action="/cards" method="GET" class="filters">
+
+    <label>Type :</label>
+    <select name="type">
+        <option value="">Tous</option>
+        <option value="Fire">Fire</option>
+        <option value="Water">Water</option>
+        <option value="Grass">Grass</option>
+        <option value="Lightning">Lightning</option>
+        <option value="Psychic">Psychic</option>
+        <option value="Fighting">Fighting</option>
+        <option value="Darkness">Darkness</option>
+        <option value="Metal">Metal</option>
+        <option value="Fairy">Fairy</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Colorless">Colorless</option>
+    </select>
+
+    <label>HP minimum :</label>
+    <input type="number" name="hp" placeholder="ex: 100">
+
+    <label>Supertype :</label>
+    <select name="supertype">
+        <option value="">Tous</option>
+        <option value="Pokémon">Pokémon</option>
+        <option value="Trainer">Trainer</option>
+        <option value="Energy">Energy</option>
+    </select>
+
+    <button type="submit">Filtrer</button>
+</form>
+
+</main>
+
+</body>
+</html>
