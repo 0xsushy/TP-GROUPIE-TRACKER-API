@@ -2,7 +2,9 @@
 
 - Compte rendu du projet — Groupie Tracker
 
-Dans ce projet, j’ai dû créer un site web en Go qui utilise une API REST pour afficher des données. J’ai choisi l’API Pokémon TCG parce qu’elle est simple, bien documentée et qu’elle propose plusieurs endpoints différents, ce qui correspondait aux demandes du sujet.
+Dans ce projet, j’ai dû créer un site web en Go qui utilise une API REST pour afficher des données. J’ai choisi l’API Tyradex parce qu’elle est simple, bien documentée et qu’elle propose plusieurs endpoints différents, ce qui correspondait aux exigences du sujet.
+Malheureusement, à cause d’un problème de dernière minute, les serveurs de cette API ont été arrêtés. J’ai donc dû essayer de changer d’API en utilisant Pokémon TCG.
+(Tout n’est donc pas entièrement opérationnel.)
 
 Le site permet d’afficher une collection de cartes Pokémon, de voir les détails d’une carte, de faire une recherche, d’utiliser plusieurs filtres, d’avoir une pagination et de gérer une liste de favoris enregistrée dans un fichier JSON.
 
